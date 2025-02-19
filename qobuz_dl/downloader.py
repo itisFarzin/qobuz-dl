@@ -317,7 +317,7 @@ def tqdm_download(url, fname, desc):
         desc=desc,
         bar_format=CYAN + "{n_fmt}/{total_fmt} /// {desc}",
     ) as bar:
-        for data in r.iter_content(chunk_size=1024):
+        for data in r.iter_content(chunk_size=1024 * 1024):
             size = file.write(data)
             bar.update(size)
             download_size += size
